@@ -6,7 +6,6 @@ import org.example.bookrepospringbootmate.dto.user.CreateUserRequestDto;
 import org.example.bookrepospringbootmate.dto.user.UserDto;
 import org.example.bookrepospringbootmate.exception.EntityNotFoundException;
 import org.example.bookrepospringbootmate.mapper.UserMapper;
-import org.example.bookrepospringbootmate.model.Book;
 import org.example.bookrepospringbootmate.model.User;
 import org.example.bookrepospringbootmate.repository.UserRepository;
 import org.springframework.stereotype.Service;

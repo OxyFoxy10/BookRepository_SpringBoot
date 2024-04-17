@@ -50,7 +50,7 @@ public class Book {
     @EqualsAndHashCode.Exclude
     @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(
-            name = "book_category",
+            name = "categories_books",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
@@ -58,6 +58,6 @@ public class Book {
 
 
     public Book() {
-     this.categories= new LinkedHashSet<>();
+        this.categories= new LinkedHashSet<>();
     }
 }

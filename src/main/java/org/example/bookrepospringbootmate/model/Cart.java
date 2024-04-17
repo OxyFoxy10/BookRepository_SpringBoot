@@ -1,12 +1,9 @@
 package org.example.bookrepospringbootmate.model;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -16,6 +13,7 @@ import java.util.Set;
 public class Cart {
     @Id
     @Column(name = "cart_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "total_price")
@@ -27,9 +25,9 @@ public class Cart {
     private Set<CartItem> cartItems;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinTable(name = "carts_user",
-            joinColumns = @JoinColumn(name = "cart_cart_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_user_id"))
+    @JoinTable(name = "users_carts",
+            joinColumns = @JoinColumn(name = "cart_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private User user;
 
 

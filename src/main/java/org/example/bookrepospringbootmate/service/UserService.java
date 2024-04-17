@@ -2,7 +2,6 @@ package org.example.bookrepospringbootmate.service;
 
 import org.example.bookrepospringbootmate.dto.user.CreateUserRequestDto;
 import org.example.bookrepospringbootmate.dto.user.UserDto;
-import org.example.bookrepospringbootmate.model.User;
 
 import java.util.List;
 import java.util.Optional;

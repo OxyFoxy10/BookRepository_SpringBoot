@@ -29,7 +29,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void delete(Long id) {
     cartRepository.deleteById(id);
     }
 }

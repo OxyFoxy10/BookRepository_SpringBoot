@@ -34,7 +34,7 @@ public BookDto save(@RequestBody CreateBookRequestDto requestDto) {
 }
 
 @PutMapping("/{id}")
-public BookDto updateById(@RequestBody CreateBookRequestDto requestDto, @PathVariable Long id) {
+public BookDto update(@RequestBody CreateBookRequestDto requestDto, @PathVariable Long id) {
     return bookService.update(requestDto);
 }
 @ResponseStatus(HttpStatus.NO_CONTENT)

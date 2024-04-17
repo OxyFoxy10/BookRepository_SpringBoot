@@ -8,5 +8,5 @@ public interface CartService {
     Cart save(Cart cart);
     Cart findById(Long id);
     Cart update(Cart cart);
-    void deleteById(Long id);
+    void delete(Long id);
 }
