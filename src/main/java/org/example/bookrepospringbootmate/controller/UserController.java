@@ -14,22 +14,26 @@ import java.util.Optional;
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
+
     private final UserService userService;
 
     @GetMapping
     public List<UserDto> findAll() {
         return userService.findAll();
     }
+
     @GetMapping("/{id}")
     public UserDto findById(@PathVariable Long id) {
         //http://localhost:8080/employees/1
         return userService.findById(id);
     }
+
     @GetMapping("/by-email")
     public Optional<UserDto> getByEmail(@RequestParam String email) {
         //http://localhost:8080/employees/by-email?email=john@gmail.com
         return userService.findByEmail(email);
     }
+
     @PostMapping
     public UserDto save(@RequestBody CreateUserRequestDto requestDto) {
         return userService.save(requestDto);
@@ -39,10 +43,10 @@ public class UserController {
     public UserDto update(@RequestBody CreateUserRequestDto requestDto, @PathVariable Long id) {
         return userService.update(requestDto);
     }
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         userService.delete(id);
     }
-
 }

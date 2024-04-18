@@ -12,6 +12,7 @@ import java.util.Set;
 @Table(name = "categories")
 @NoArgsConstructor
 public class Category {
+
     @Id
     @Column(name = "category_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

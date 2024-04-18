@@ -19,7 +19,6 @@ import java.util.Set;
 @Table(name = "books")
 public class Book {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
@@ -55,7 +54,6 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private Set<Category> categories;
-
 
     public Book() {
         this.categories= new LinkedHashSet<>();

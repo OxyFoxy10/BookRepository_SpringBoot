@@ -11,6 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "carts")
 public class Cart {
+
     @Id
     @Column(name = "cart_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +30,6 @@ public class Cart {
             joinColumns = @JoinColumn(name = "cart_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private User user;
-
 
     public Cart() {
         this.cartItems = new LinkedHashSet<>();

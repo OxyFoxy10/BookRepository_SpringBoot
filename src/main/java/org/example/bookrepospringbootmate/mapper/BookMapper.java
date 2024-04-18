@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 @Mapper(config= MapperConfig.class, uses = {CategoryMapper.class})
 public interface BookMapper {
+
     @Mapping(target = "categoriesIds", ignore = true)
     BookDto toDto(Book book);
 
@@ -45,7 +46,5 @@ public interface BookMapper {
                     .collect(Collectors.toSet());
             book.setCategories(categories);
         }
-
-
     }
 }

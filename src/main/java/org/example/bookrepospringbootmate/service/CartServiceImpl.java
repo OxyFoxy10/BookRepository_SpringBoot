@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 public class CartServiceImpl implements CartService {
+
     private final CartRepository cartRepository;
 
     @Override
@@ -30,6 +31,6 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void delete(Long id) {
-    cartRepository.deleteById(id);
+        cartRepository.deleteById(id);
     }
 }

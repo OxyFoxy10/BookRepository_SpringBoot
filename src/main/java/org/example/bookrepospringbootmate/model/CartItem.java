@@ -10,6 +10,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "cart_items")
 public class CartItem {
+
     @Id
     @Column(name = "cart_item_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,12 +28,9 @@ public class CartItem {
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
-
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @OneToOne (cascade = CascadeType.PERSIST)
     @JoinColumn(name = "book_id")
     private Book book;
-
-
 }

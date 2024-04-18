@@ -14,6 +14,4 @@ import java.util.List;
         private BigDecimal price;
         private String isbn;
     private List<Long> categoriesIds;
-
 }
-

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
+
     UserDto save(CreateUserRequestDto requestDto);
 
     UserDto findById(Long id);
@@ -16,5 +17,6 @@ public interface UserService {
     List<UserDto> findAll();
 
     UserDto update(CreateUserRequestDto requestDto);
+
     void delete(Long id);
 }

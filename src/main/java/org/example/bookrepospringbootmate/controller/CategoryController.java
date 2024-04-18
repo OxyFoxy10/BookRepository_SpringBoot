@@ -14,10 +14,12 @@ import java.util.List;
 public class CategoryController {
 
     private final CategoryService categoryService;
+
     @GetMapping
     public List<CategoryDto> findAll() {
         return categoryService.findAll();
     }
+
     @PostMapping
     public CategoryDto save(@RequestBody CreateCategoryRequestDto requestDto) {
         return categoryService.save(requestDto);

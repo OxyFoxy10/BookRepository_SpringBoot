@@ -14,8 +14,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class CategoryServiceImpl implements CategoryService {
+
     private final CategoryRepository categoryRepository;
+
     private final CategoryMapper categoryMapper;
+
     @Override
     public List<CategoryDto> findAll() {
         return  categoryRepository.findAll().stream()
