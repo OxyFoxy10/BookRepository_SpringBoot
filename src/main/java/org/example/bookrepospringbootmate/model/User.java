@@ -9,7 +9,7 @@ import org.hibernate.annotations.Where;
 
 @Data
 @Entity
-@SQLDelete(sql="UPDATE users SET active = false WHERE user_id=?")
+@SQLDelete(sql = "UPDATE users SET active = false WHERE user_id=?")
 @Where(clause="active=true")
 @Table(name = "users")
 public class User {

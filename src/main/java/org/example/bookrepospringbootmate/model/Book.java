@@ -56,6 +56,6 @@ public class Book {
     private Set<Category> categories;
 
     public Book() {
-        this.categories= new LinkedHashSet<>();
+        this.categories = new LinkedHashSet<>();
     }
 }

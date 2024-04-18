@@ -9,5 +9,4 @@ public class BookRepoSpringBootMateApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BookRepoSpringBootMateApplication.class, args);
 	}
-
 }

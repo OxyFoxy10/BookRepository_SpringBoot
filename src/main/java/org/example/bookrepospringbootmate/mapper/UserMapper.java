@@ -6,7 +6,7 @@ import org.example.bookrepospringbootmate.dto.user.UserDto;
 import org.example.bookrepospringbootmate.model.User;
 import org.mapstruct.Mapper;
 
-@Mapper(config= MapperConfig.class)
+@Mapper(config = MapperConfig.class)
 public interface UserMapper {
 
     UserDto toDto(User user);
