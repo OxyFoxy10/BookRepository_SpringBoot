@@ -1,7 +1,5 @@
 package org.example.bookrepospringbootmate.dto.book;
 
-
-
 import java.math.BigDecimal;
 import java.util.List;
 

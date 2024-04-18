@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -22,13 +23,13 @@ public class Cart {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany (mappedBy = "cart", cascade =  CascadeType.ALL,  orphanRemoval = true )
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CartItem> cartItems;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinTable(name = "users_carts",
-            joinColumns = @JoinColumn(name = "cart_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
+        joinColumns = @JoinColumn(name = "cart_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id"))
     private User user;
 
     public Cart() {

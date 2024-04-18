@@ -10,7 +10,7 @@ import org.hibernate.annotations.Where;
 @Data
 @Entity
 @SQLDelete(sql = "UPDATE users SET active = false WHERE user_id=?")
-@Where(clause="active=true")
+@Where(clause = "active=true")
 @Table(name = "users")
 public class User {
     @Id
@@ -29,14 +29,14 @@ public class User {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Role role= Role.USER;
+    private Role role = Role.USER;
 
     @Column
-    private boolean active=true;
+    private boolean active = true;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToOne (mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id")
     private Cart cart;
 

@@ -14,8 +14,8 @@ import java.util.Set;
 
 @Data
 @Entity
-@SQLDelete(sql="UPDATE books SET is_deleted = true WHERE book_id=?")
-@Where(clause="is_deleted=false")
+@SQLDelete(sql = "UPDATE books SET is_deleted = true WHERE book_id=?")
+@Where(clause = "is_deleted=false")
 @Table(name = "books")
 public class Book {
 
@@ -47,11 +47,11 @@ public class Book {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @ManyToMany (fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "categories_books",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id")
+        name = "categories_books",
+        joinColumns = @JoinColumn(name = "book_id"),
+        inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private Set<Category> categories;
 

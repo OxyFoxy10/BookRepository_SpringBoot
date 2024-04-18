@@ -15,11 +15,12 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+
     @Override
     public UserDto save(CreateUserRequestDto requestDto) {
         assert userMapper != null;
@@ -33,23 +34,23 @@ public class UserServiceImpl implements UserService{
     @Override
     public UserDto findById(Long id) {
         return userRepository.findById(id)
-                .map(userMapper::toDto)
-                .orElseThrow(()-> new EntityNotFoundException("User not found by id: " + id));
+            .map(userMapper::toDto)
+            .orElseThrow(() -> new EntityNotFoundException("User not found by id: " + id));
     }
 
     @Override
     public Optional<UserDto> findByEmail(String email) {
         return Optional.ofNullable(userRepository.findByEmail(email)
-                .map(userMapper::toDto)
-                .orElseThrow(() -> new EntityNotFoundException("User not found by email: " + email)));
+            .map(userMapper::toDto)
+            .orElseThrow(() -> new EntityNotFoundException("User not found by email: " + email)));
     }
 
 
     @Override
     public List<UserDto> findAll() {
         return userRepository.findAll().stream()
-                .map(userMapper::toDto)
-                .toList();
+            .map(userMapper::toDto)
+            .toList();
     }
 
     @Override
@@ -63,8 +64,8 @@ public class UserServiceImpl implements UserService{
         User user = userMapper.toEntity(requestDto);
         assert userRepository != null;
         userRepository.findById(user.getId()).orElseThrow(() ->
-                new EntityNotFoundException("Not found book with id " + user.getId()
-                        + " for update"));
+            new EntityNotFoundException("Not found book with id " + user.getId()
+                + " for update"));
         User updatedUser = userRepository.save(user);
 
         return userMapper.toDto(updatedUser);

@@ -24,13 +24,13 @@ public class CartItem {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToOne (cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "book_id")
     private Book book;
 }

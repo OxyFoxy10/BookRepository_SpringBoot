@@ -23,7 +23,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public Cart update(Cart cart) {
-        if(cartRepository.existsById(cart.getId())) {
+        if (cartRepository.existsById(cart.getId())) {
             return cartRepository.save(cart);
         }
         return null;

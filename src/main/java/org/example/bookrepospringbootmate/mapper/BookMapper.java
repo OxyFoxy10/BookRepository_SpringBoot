@@ -5,15 +5,15 @@ import org.example.bookrepospringbootmate.dto.book.BookDto;
 import org.example.bookrepospringbootmate.dto.book.CreateBookRequestDto;
 import org.example.bookrepospringbootmate.model.Book;
 import org.example.bookrepospringbootmate.model.Category;
-import org.mapstruct.AfterMapping;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.mapstruct.AfterMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(config = MapperConfig.class, uses = {CategoryMapper.class})
 public interface BookMapper {
@@ -22,13 +22,13 @@ public interface BookMapper {
     BookDto toDto(Book book);
 
     @AfterMapping
-    default  void setCategoriesIds(@MappingTarget BookDto bookDto, Book book) {
+    default void setCategoriesIds(@MappingTarget BookDto bookDto, Book book) {
         if (book.getCategories() == null) {
             bookDto.setCategoriesIds(null);
         } else {
             List<Long> categoriesIds = book.getCategories().stream()
-                    .map(Category::getId)
-                    .toList();
+                .map(Category::getId)
+                .toList();
             bookDto.setCategoriesIds(categoriesIds);
         }
     }
@@ -37,13 +37,13 @@ public interface BookMapper {
     Book toModel(CreateBookRequestDto requestDto);
 
     @AfterMapping
-    default  void setCategories(@MappingTarget Book book, CreateBookRequestDto requestDto) {
+    default void setCategories(@MappingTarget Book book, CreateBookRequestDto requestDto) {
         if (requestDto.categoriesIds() == null) {
             book.setCategories(null);
-        } else{
+        } else {
             Set<Category> categories = requestDto.categoriesIds().stream()
-                    .map(Category::new)
-                    .collect(Collectors.toSet());
+                .map(Category::new)
+                .collect(Collectors.toSet());
             book.setCategories(categories);
         }
     }

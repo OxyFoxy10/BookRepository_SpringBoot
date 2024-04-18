@@ -36,23 +36,23 @@ public class BookServiceImpl implements BookService {
         bookRepository.findById(1L).ifPresent(System.out::println);
 //            bookRepository.findById(1L).ifPresent(p->System.out.println(p.hashCode()));
         return bookRepository.findAll().stream()
-                .map(bookMapper::toDto)
-                .collect(Collectors.toList());
+            .map(bookMapper::toDto)
+            .collect(Collectors.toList());
     }
 
     @Override
     public BookDto findById(Long id) {
         return bookRepository.findById(id)
-                .map(bookMapper::toDto)
-                .orElseThrow(()-> new EntityNotFoundException("Book not found by id: " + id));
+            .map(bookMapper::toDto)
+            .orElseThrow(() -> new EntityNotFoundException("Book not found by id: " + id));
     }
 
     @Override
     public List<BookDto> findAllByTitle(String title) {
         //return employeeRepository.getAllByN(name).stream()
         return bookRepository.findAllByTitleContainingIgnoreCase(title).stream()
-                .map(bookMapper::toDto)
-                .toList();
+            .map(bookMapper::toDto)
+            .toList();
     }
 
     @Override
@@ -61,8 +61,8 @@ public class BookServiceImpl implements BookService {
         Book book = bookMapper.toModel(requestDto);
         assert bookRepository != null;
         bookRepository.findById(book.getId()).orElseThrow(() ->
-                new EntityNotFoundException("Not found book with id " + book.getId()
-                        + " for update"));
+            new EntityNotFoundException("Not found book with id " + book.getId()
+                + " for update"));
         Book updatedBook = bookRepository.save(book);
         return bookMapper.toDto(updatedBook);
     }

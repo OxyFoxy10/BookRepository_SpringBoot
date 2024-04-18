@@ -8,5 +8,5 @@ public class UserDto {
     private Long id;
     private String email;
     private String name;
-   private User.Role role;
+    private User.Role role;
 }
