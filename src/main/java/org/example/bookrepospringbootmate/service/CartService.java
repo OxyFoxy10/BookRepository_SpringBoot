@@ -2,7 +2,6 @@ package org.example.bookrepospringbootmate.service;
 
 import org.example.bookrepospringbootmate.model.Cart;
 
-
 public interface CartService {
 
     Cart save(Cart cart);

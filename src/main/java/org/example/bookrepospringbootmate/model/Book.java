@@ -1,16 +1,14 @@
 package org.example.bookrepospringbootmate.model;
 
+import java.math.BigDecimal;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-
-import java.math.BigDecimal;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 
 @Data
 @Entity
@@ -49,13 +47,10 @@ public class Book {
     @EqualsAndHashCode.Exclude
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-        name = "categories_books",
-        joinColumns = @JoinColumn(name = "book_id"),
-        inverseJoinColumns = @JoinColumn(name = "category_id")
+            name = "categories_books",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private Set<Category> categories;
+    private Set<Category> categories = new LinkedHashSet<>();
 
-    public Book() {
-        this.categories = new LinkedHashSet<>();
-    }
 }

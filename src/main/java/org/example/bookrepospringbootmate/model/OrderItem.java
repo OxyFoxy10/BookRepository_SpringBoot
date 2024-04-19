@@ -7,29 +7,25 @@ import lombok.ToString;
 
 @Data
 @Entity
-@Table(name = "cart_items")
-public class CartItem {
+@Table(name = "order_items")
+public class OrderItem {
 
     @Id
-    @Column(name = "cart_item_id")
+    @Column(name = "order_item_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private int quantity;
-
-    @Column(nullable = false)
-    private double price;
+    private Double price;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Order order;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "book_id")
-    private Book book;
+    @OneToOne
+    @JoinColumn(name = "cart_item_id")
+    private CartItem cartItem;
 }

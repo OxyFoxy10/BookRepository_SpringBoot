@@ -1,5 +1,7 @@
 package org.example.bookrepospringbootmate.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.example.bookrepospringbootmate.dto.category.CategoryDto;
 import org.example.bookrepospringbootmate.dto.category.CreateCategoryRequestDto;
@@ -7,9 +9,6 @@ import org.example.bookrepospringbootmate.mapper.CategoryMapper;
 import org.example.bookrepospringbootmate.model.Category;
 import org.example.bookrepospringbootmate.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service

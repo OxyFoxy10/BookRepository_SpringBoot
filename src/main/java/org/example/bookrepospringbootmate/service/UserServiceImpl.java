@@ -1,30 +1,35 @@
 package org.example.bookrepospringbootmate.service;
 
-
+import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.example.bookrepospringbootmate.dto.user.CreateUserRequestDto;
 import org.example.bookrepospringbootmate.dto.user.UserDto;
 import org.example.bookrepospringbootmate.exception.EntityNotFoundException;
 import org.example.bookrepospringbootmate.mapper.UserMapper;
+import org.example.bookrepospringbootmate.model.Cart;
 import org.example.bookrepospringbootmate.model.User;
+import org.example.bookrepospringbootmate.repository.CartRepository;
 import org.example.bookrepospringbootmate.repository.UserRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
 
-
     private final UserRepository userRepository;
+    private final CartRepository cartRepository;
     private final UserMapper userMapper;
 
     @Override
     public UserDto save(CreateUserRequestDto requestDto) {
         assert userMapper != null;
         User user = userMapper.toEntity(requestDto);
+
+        Cart cart = new Cart();
+        assert cartRepository != null;
+        Cart savedCart = cartRepository.save(cart);
+        user.setCart(cart);
 
         assert userRepository != null;
         User savedUser = userRepository.save(user);

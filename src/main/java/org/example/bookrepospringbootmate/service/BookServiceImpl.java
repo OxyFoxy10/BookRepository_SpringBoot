@@ -1,5 +1,7 @@
 package org.example.bookrepospringbootmate.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.example.bookrepospringbootmate.dto.book.BookDto;
 import org.example.bookrepospringbootmate.dto.book.CreateBookRequestDto;
@@ -8,11 +10,6 @@ import org.example.bookrepospringbootmate.mapper.BookMapper;
 import org.example.bookrepospringbootmate.model.Book;
 import org.example.bookrepospringbootmate.repository.BookRepository;
 import org.springframework.stereotype.Service;
-
-
-import java.util.List;
-import java.util.stream.Collectors;
-
 
 @RequiredArgsConstructor
 @Service
@@ -34,7 +31,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookDto> findAll() {
         bookRepository.findById(1L).ifPresent(System.out::println);
-//            bookRepository.findById(1L).ifPresent(p->System.out.println(p.hashCode()));
+        //bookRepository.findById(1L).ifPresent(p->System.out.println(p.hashCode()));
         return bookRepository.findAll().stream()
             .map(bookMapper::toDto)
             .collect(Collectors.toList());

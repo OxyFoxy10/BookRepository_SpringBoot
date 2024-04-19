@@ -1,6 +1,9 @@
 package org.example.bookrepospringbootmate.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -28,6 +31,21 @@ public class User {
     private String password;
 
     @Column(nullable = false)
+    private String phone;
+
+    @Column(name = "birth_date", columnDefinition = "DATE")
+    private LocalDate birthDate;
+
+    @Column
+    private String address;
+
+    @Column
+    private String city;
+
+    @Column
+    private String postcode;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role = Role.USER;
 
@@ -36,9 +54,14 @@ public class User {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")
     private Cart cart;
+
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(mappedBy = "client")
+    private Set<Order> orders = new LinkedHashSet<>();
 
     public enum Role {
         USER,

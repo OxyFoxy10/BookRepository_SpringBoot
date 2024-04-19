@@ -1,9 +1,8 @@
 package org.example.bookrepospringbootmate.service;
 
+import java.util.List;
 import org.example.bookrepospringbootmate.dto.category.CategoryDto;
 import org.example.bookrepospringbootmate.dto.category.CreateCategoryRequestDto;
-
-import java.util.List;
 
 public interface CategoryService {
 

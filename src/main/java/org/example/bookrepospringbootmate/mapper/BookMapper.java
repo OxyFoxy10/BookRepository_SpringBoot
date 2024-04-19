@@ -1,15 +1,13 @@
 package org.example.bookrepospringbootmate.mapper;
 
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.example.bookrepospringbootmate.config.MapperConfig;
 import org.example.bookrepospringbootmate.dto.book.BookDto;
 import org.example.bookrepospringbootmate.dto.book.CreateBookRequestDto;
 import org.example.bookrepospringbootmate.model.Book;
 import org.example.bookrepospringbootmate.model.Category;
-
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -27,8 +25,8 @@ public interface BookMapper {
             bookDto.setCategoriesIds(null);
         } else {
             List<Long> categoriesIds = book.getCategories().stream()
-                .map(Category::getId)
-                .toList();
+                    .map(Category::getId)
+                    .toList();
             bookDto.setCategoriesIds(categoriesIds);
         }
     }
@@ -42,8 +40,8 @@ public interface BookMapper {
             book.setCategories(null);
         } else {
             Set<Category> categories = requestDto.categoriesIds().stream()
-                .map(Category::new)
-                .collect(Collectors.toSet());
+                    .map(Category::new)
+                    .collect(Collectors.toSet());
             book.setCategories(categories);
         }
     }
